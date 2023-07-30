@@ -8,6 +8,7 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -29,13 +30,13 @@ jobs:
         python -m pip install --upgrade pip
     - name: Install test requirements dependencies
       run: |
-        pip install -r bikeshare_project_2/requirements/test_requirements.txt
+        pip install -r requirements/test_requirements.txt
     - name: Format code with Black
       run: |
         black bikeshare_project_2/*.py
     - name: train pipeline
       run: |
-        python bikeshare_project_2/bikeshare_model/pipeline.py
+        python bikeshare_model/pipeline.py
     - name: test with pytest
       run: |
         pytest

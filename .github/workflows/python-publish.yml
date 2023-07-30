@@ -31,9 +31,6 @@ jobs:
     - name: Install test requirements dependencies
       run: |
         pip install -r requirements/test_requirements.txt
-    - name: Format code with Black
-      run: |
-        black bikeshare_project_2/*.py
     - name: train pipeline
       run: |
         python bikeshare_model/pipeline.py

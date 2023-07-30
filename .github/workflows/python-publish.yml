@@ -23,14 +23,19 @@ jobs:
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
+       python-version: ${{ matrix.python-version }}
+    - name: Install pip dependencies
       run: |
-        python3 -m pip install --upgrade pip
-        python3 -m pip install -r requirements/test_requirements.txt
-    - name: train_pipeline
+        python -m pip install --upgrade pip
+    - name: Install test requirements dependencies
       run: |
-        python3 bikeshare_model/pipeline.py
+        pip install -r bikeshare_project_2/requirements/test_requirements.txt
+    - name: Format code with Black
+      run: |
+        black bikeshare_project_2/*.py
+    - name: train pipeline
+      run: |
+        python bikeshare_project_2/bikeshare_model/pipeline.py
     - name: test with pytest
       run: |
         pytest

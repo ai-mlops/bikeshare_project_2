@@ -30,7 +30,7 @@ jobs:
         python -m pip install -r requirements/test_requirements.txt
     - name: train_pipeline
       run: |
-        python ./bikeshare_project_2/bikeshare_model/pipeline.py
+        python ./bikeshare_model/pipeline.py
     - name: test with pytest
       run: |
         pytest
